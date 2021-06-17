@@ -1,0 +1,8 @@
+FROM centos:centos7
+
+RUN yum install httpd -y
+
+COPY prueba /var/www/html
+ENV contenido prueba
+RUN echo "$contenido" > /var/www/html/prueba.html
+CMD apachectl -DFOREGROUND

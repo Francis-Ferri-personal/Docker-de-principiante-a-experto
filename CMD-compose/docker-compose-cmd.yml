@@ -1,0 +1,11 @@
+version: '3'
+services:
+  web:
+    image: centos-python
+    command: python2 -m SimpleHTTPServer 8000
+    ports:
+      - "8080:8000"
+    build:
+      context: .
+      dockerfile: Dockerfile-centos-python
+

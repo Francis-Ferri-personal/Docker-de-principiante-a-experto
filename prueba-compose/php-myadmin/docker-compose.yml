@@ -1,0 +1,20 @@
+version: "3"
+services:
+  db:
+    container_name: mysql
+    image: mysql:5.7
+    env_file:
+      - .env
+    volumes:
+      - "db-data:/var/lib/mysql"
+  admin:
+    container_name: php-myadmin
+    depends_on:
+      - db
+    ports:
+      - "80:80"
+    image: phpmyadmin/phpmyadmin
+    env_file:
+      - .env
+volumes:
+  db-data:

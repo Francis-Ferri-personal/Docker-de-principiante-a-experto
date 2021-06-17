@@ -1,0 +1,19 @@
+version: "2"
+services:
+  web:
+    container_name: apache-php
+    mem_limit: 60m
+    cpuset: "0"
+    image: apache-php-test
+    env_file: .env
+    networks:
+      - net-apache-php    
+    ports:
+      - "80:80"
+    build: .
+    volumes:
+      - "data-apache-php:/var/www/html"
+volumes:
+  data-apache-php:
+networks:
+  net-apache-php:
